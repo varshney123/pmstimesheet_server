@@ -1,28 +1,11 @@
 var express = require('express');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-
-
-
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Varshney19@95",
-  database:"pmsdatabase"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  con.query("select * from 22959_users", function (err, result) {
-    if (err) throw err;
-    console.log("Result: " , result);
-  });
-});
-
+var connect=require('./controllers/users');
 // Create Express application
 var app = module.exports = express();
+
+connect.connection();
 
 var NODE_ENV = 'development';
 //Set Variables
